@@ -1,0 +1,50 @@
+-featureleveles31 -opengl -game 
+-ExecCmds=“stat unit, stat memory”
+
+-BaseDir="C:\Users\aoligeideng\Downloads\CAGame-0.1.0.254.0-Win64-Development\UAGame\Binaries\Win64"
+AndroidDebug : command script import "F:\UAProject\UAEngine\Engine\Extras\LLDBDataFormatters\UE4DataFormatters_2ByteChars.py"
+
+[/Script/WindowsTargetPlatform.WindowsTargetSettings]
+DefaultGraphicsRHI=DefaultGraphicsRHI_DX12
+
+UStreamableRenderAsset::RegisterMipLevelChangeCallback
+
+DebugSetTODTime 18
+阴影测试点  DoTransport X=26674 Y= -1246 Z= 2535
+室内测试点 DoTransport x= 31254 y=-6996 z=2607
+户外测试点 DoTransport x= 45549 y=6827 z=2062
+户外测试点2 DoTransport x= 42253 y=-11672 z=2536
+户外测试点3 DoTransport x= 23305 y=-12872 z=2317
+Component_x0_y0 DoTransport x= -129 y=209 z=2166
+
+移动端测试点 DoTransport x= 46015 y=-3204 z=2209
+移动端 bug 测试点 DoTransport x=42612 y=-6541 z=2203
+
+adb shell "am broadcast -a android.intent.action.RUN -e cmd 'r.mobile.EnableBuildHZB 1'"
+r.mobile.EnableBuildHZB
+r.GPUDrivenLandscape.UseGPUDriven
+r.GPUDrivenLandscape.EnableOcclusion
+
+open farmland_715_main?PlayerStart=BP_UamPlayerStart30
+open farmland_715_main?PlayerStart=BP_UamPlayerStart4
+open farmland_715_main?PlayerStart=BP_UamPlayerStart64
+
+可以输入这个指令添加倍镜   giveitem 201030207 1 1
+
+AsynceHelper::ExecuteOnGameThread()
+
+SM5 支持 √
+与 CA RVT 的兼容 √
+启用 GPUDriven 后 DistanceField 是否正常 √
+和版本性能测试（Nsight工具测试，HZB culling）√
+测试方法调整：改材质到unlit类，测试 patch 大小 √
+Mesh Density√
+Mesh Density Lod 方案√
+
+Component相接处产生锯齿（偏移错误）
+测试地图阴影处Component相接的地方有接线（原版也存在这个问题）
+
+合批drawcall
+	优化高度采样部分（减少计算以及 Buffer 依赖）
+cpu-culling （平衡 cpu 与 gpu 性能）
+
